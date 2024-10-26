@@ -1,36 +1,25 @@
-import React from 'react'
-import BrandCard from './BrandCard'
-import brand1 from "../../images/brand1.png";
-import brand2 from "../../images/brand2.png";
-import brand3 from "../../images/brand3.png";
-import { Container, Row } from 'react-bootstrap';
-const BrandContainer = () => {
-    return (
-        <Container>
-            <div className="admin-content-text mt-2 ">كل الماركات</div>
-            <Row className='my-1 d-flex justify-content-between'>
-                <BrandCard img={brand1} />
-                <BrandCard img={brand2} />
-                <BrandCard img={brand3} />
-                <BrandCard img={brand2} />
-                <BrandCard img={brand1} />
-                <BrandCard img={brand3} />
-                <BrandCard img={brand1} />
-                <BrandCard img={brand2} />
-                <BrandCard img={brand3} />
-                <BrandCard img={brand2} />
-                <BrandCard img={brand1} />
-                <BrandCard img={brand3} />
-                <BrandCard img={brand1} />
-                <BrandCard img={brand2} />
-                <BrandCard img={brand3} />
-                <BrandCard img={brand2} />
-                <BrandCard img={brand1} />
-                <BrandCard img={brand3} />
+import React from "react";
+import BrandCard from "./BrandCard";
+import { Container, Row, Spinner } from "react-bootstrap"; // تأكد من وجود Spinner هنا
 
-            </Row>
-        </Container>
-    )
-}
+const BrandContainer = ({ data ,loading}) => {
 
-export default BrandContainer
+  return (
+    <Container>
+      <div className="admin-content-text mt-2">كل الماركات</div>
+      <Row className="my-1 d-flex justify-content-between">
+        {!loading ? (
+          data ? (
+            data?.map((item, index) => (
+              <BrandCard key={index} img={item.image} />
+            ))
+          ) : null
+        ) : (
+          <Spinner animation="border" variant="primary" />
+        )}
+      </Row>
+    </Container>
+  );
+};
+
+export default BrandContainer;

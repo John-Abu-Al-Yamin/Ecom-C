@@ -1,5 +1,4 @@
 import React , { useEffect } from 'react';
-import baseUrl from './../../Api/baseURL';
 import { useSelector, useDispatch } from 'react-redux'
 import { getAllCategory, getAllCategoryPage } from '../../redux/actions/categoryAction'
 
@@ -14,7 +13,6 @@ const AllCategoryHook = () => {
     const category = useSelector(state => state.allCategory.category)
     const loading = useSelector(state => state.allCategory.loading)
 
-    console.log(category)
 
     //to get page count
     let pageCount = 0;
